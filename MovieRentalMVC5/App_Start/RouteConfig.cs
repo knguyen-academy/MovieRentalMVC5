@@ -13,6 +13,7 @@ namespace MovieRentalMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Partern Customer/Detail/1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
