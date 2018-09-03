@@ -13,7 +13,16 @@ namespace MovieRentalMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //Partern Customer/Detail/1
+            //add custom router for ByReleaseDate action in Movie Controller
+            routes.MapRoute(
+                "MoviesByReleaseDate",  //Name
+                "movies/released/{year}/{month}",   //URL partern
+                new {controller = "Movies", action = "ByReleaseDate"},   //default
+                new { year = @"\d{4}", month = @"\d{2}" }
+                );
+
+
+            // Default Route
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
