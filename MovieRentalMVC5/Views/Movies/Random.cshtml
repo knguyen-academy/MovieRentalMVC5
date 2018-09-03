@@ -1,7 +1,36 @@
-﻿@model MovieRentalMVC5.Models.Movie
+﻿@* from prev lesson, use model @model MovieRentalMVC5.Models.Movie*@
+@* Use View Model RandomMovieViewModel*@
+@model MovieRentalMVC5.ViewModels.RandomMovieViewModel
+
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+@
+@{ 
+    var className = Model.Customers.Count > 5 ? "popular" : null;
+}
+
+
+@*Get Movie Name*@
+<h2 class="@className">@Model.Movie.Name</h2>
+
+
+@*Get customers*@
+@if (Model.Customers.Count == 0)
+{
+    <p>No one has rented the movie before</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+           <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+

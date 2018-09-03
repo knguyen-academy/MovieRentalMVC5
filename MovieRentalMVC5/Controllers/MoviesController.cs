@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MovieRentalMVC5.Models;
-
+using MovieRentalMVC5.ViewModels;
 
 namespace MovieRentalMVC5.Controllers
 {
@@ -15,7 +15,20 @@ namespace MovieRentalMVC5.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };    // need MovieRentalMVC5.Models lib
-            return View(movie);
+
+            var customers = new List<Customer>
+            {
+                new Customer {Name = "Customer 1"},
+                new Customer {Name = "Customer 2"}
+            };
+
+            var viewModel = new RandomMovieViewModel() // need  MovieRentalMVC5.ViewModels lib
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
         }
 
         // EXAMPLE of Parameter using Content Action
