@@ -11,7 +11,7 @@ namespace MovieRentalMVC5.Migrations
                 "dbo.MembershipTypes",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false),
                         SignUpFee = c.Short(nullable: false),
                         DurationInMonths = c.Byte(nullable: false),
                         DiscountRate = c.Byte(nullable: false),

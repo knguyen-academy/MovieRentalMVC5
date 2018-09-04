@@ -13,7 +13,7 @@ namespace MovieRentalMVC5.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809032037320_AddMembershipType"; }
+            get { return "201809040146536_AddMembershipType"; }
         }
         
         string IMigrationMetadata.Source
