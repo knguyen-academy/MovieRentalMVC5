@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MovieRentalMVC5.Models;
+using System.Data.Entity; //need for Eager loading
 
 namespace MovieRentalMVC5.Controllers
 {
@@ -28,7 +29,8 @@ namespace MovieRentalMVC5.Controllers
 
         public ActionResult Index()
         {
-            var customers = _context.Customers.ToList();
+            // get Customer Dbcontext, and Include Reference Membership table
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
 
