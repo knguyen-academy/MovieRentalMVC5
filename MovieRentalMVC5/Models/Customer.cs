@@ -16,6 +16,8 @@ namespace MovieRentalMVC5.Models
 
         public bool IsSubsribedToNewsLetter { get; set; }
 
+        public DateTime? Birthdate{ get; set; }
+
         //Navigation , ref to Membership Table
         public MembershipType MembershipType { get; set; }
         //FK to membership table, <Table_Name>Id -> Convention, treat as FK

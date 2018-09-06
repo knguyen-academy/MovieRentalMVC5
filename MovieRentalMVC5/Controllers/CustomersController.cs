@@ -37,7 +37,7 @@ namespace MovieRentalMVC5.Controllers
         public ActionResult Details(int id)
         {
 
-            var customers = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customers = _context.Customers.Include(m => m.MembershipType).SingleOrDefault(c => c.Id == id);
             if (customers == null)
                 return HttpNotFound();
 
