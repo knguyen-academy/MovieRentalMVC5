@@ -9,8 +9,8 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <td>Customer</td>
-            <td>Discount Rate</td>
+            <th>Customer</th>
+            <th>Membership Type</th>
         </tr>
         
     </thead>
@@ -21,7 +21,7 @@
         <td>
             @Html.ActionLink(customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
         </td>
-        <td>@customer.MembershipType.DiscountRate %</td>
+        <td>@customer.MembershipType.Name</td>
     </tr>
     }
 </table>
