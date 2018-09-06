@@ -13,7 +13,7 @@ namespace MovieRentalMVC5.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809060450272_PopulateGenre"; }
+            get { return "201809060510316_PopulateGenre"; }
         }
         
         string IMigrationMetadata.Source
