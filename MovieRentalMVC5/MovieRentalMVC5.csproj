@@ -229,9 +229,22 @@
     <Compile Include="Migrations\201809060420283_AddBirthdateToCustomer.Designer.cs">
       <DependentUpon>201809060420283_AddBirthdateToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809060442408_AddGenreModel.cs" />
+    <Compile Include="Migrations\201809060442408_AddGenreModel.Designer.cs">
+      <DependentUpon>201809060442408_AddGenreModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809060449242_AddGenreTable.cs" />
+    <Compile Include="Migrations\201809060449242_AddGenreTable.Designer.cs">
+      <DependentUpon>201809060449242_AddGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809060450272_PopulateGenre.cs" />
+    <Compile Include="Migrations\201809060450272_PopulateGenre.Designer.cs">
+      <DependentUpon>201809060450272_PopulateGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -344,6 +357,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809060420283_AddBirthdateToCustomer.resx">
       <DependentUpon>201809060420283_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060442408_AddGenreModel.resx">
+      <DependentUpon>201809060442408_AddGenreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060449242_AddGenreTable.resx">
+      <DependentUpon>201809060449242_AddGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809060450272_PopulateGenre.resx">
+      <DependentUpon>201809060450272_PopulateGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
