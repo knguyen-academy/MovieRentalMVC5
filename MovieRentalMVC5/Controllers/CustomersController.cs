@@ -27,6 +27,11 @@ namespace MovieRentalMVC5.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             // get Customer Dbcontext, and Include Reference Membership table

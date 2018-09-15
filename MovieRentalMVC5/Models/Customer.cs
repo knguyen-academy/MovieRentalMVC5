@@ -16,6 +16,7 @@ namespace MovieRentalMVC5.Models
 
         public bool IsSubsribedToNewsLetter { get; set; }
 
+        [Display(Name ="Date of Birth")]
         public DateTime? Birthdate{ get; set; }
 
         //Navigation , ref to Membership Table
