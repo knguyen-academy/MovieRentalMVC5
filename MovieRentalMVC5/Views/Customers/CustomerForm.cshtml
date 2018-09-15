@@ -3,7 +3,7 @@
 @{
     /**/
 
-    ViewBag.Title = "New";
+    ViewBag.Title = "CustomerForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 
 @*@Html.BeginForm("Action", "Controller")*@
 
-@using (Html.BeginForm("Create", "Customers"))
+@using (Html.BeginForm("Save", "Customers"))
 {
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.Name)
@@ -20,13 +20,7 @@
 
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.Birthdate)
-        @Html.TextBoxFor(c => c.Customer.Birthdate, new { @class = "form-control" })
-    </div>
-
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(c => c.Customer.IsSubsribedToNewsLetter) Subscribed to Newsletter?
-        </label>
+        @Html.TextBoxFor(c => c.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
     </div>
 
     @*SelectList(List of items, Value of item, Text of item)*@
@@ -35,6 +29,13 @@
         @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
     </div>
 
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(c => c.Customer.IsSubsribedToNewsLetter) Subscribed to Newsletter?
+        </label>
+    </div>
+
+    @Html.HiddenFor(c =>c.Customer.Id)
     <button type="submit" class="btn btn-primary">Save</button>
 }
 

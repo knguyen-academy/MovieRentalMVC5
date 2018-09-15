@@ -28,8 +28,8 @@ namespace MovieRentalMVC5.Controllers
             _context.Dispose();
         }
 
-        //New Customer
-        public ActionResult New()
+        //New CustomerForm
+        public ActionResult CustomerForm()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new NewCustomerViewModel
@@ -40,11 +40,47 @@ namespace MovieRentalMVC5.Controllers
             return View(viewModel);
         }
 
+        //Edit Customer
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModel);
+
+        }
+
+        //SAVE BUTTON ACTION
+        // if new customer (customer.id =0) -> add to DB, if existed customer -> update 
         //Only be called after post
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);   //Add to DB
+            //If new Customer
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);   //Add to DB
+            }
+
+            //If existing customer
+            else
+            {
+                //get existing customer in DB
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //Update customer
+                //TryUpdateModel(customerInDb);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubsribedToNewsLetter = customer.IsSubsribedToNewsLetter;
+            }
             _context.SaveChanges(); //Commit changes to DB
 
             return RedirectToAction("Index","Customers");
