@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MovieRentalMVC5.Models;
+using MovieRentalMVC5.ViewModels;
 using System.Data.Entity; //need for Eager loading
 
 namespace MovieRentalMVC5.Controllers
@@ -27,9 +28,16 @@ namespace MovieRentalMVC5.Controllers
             _context.Dispose();
         }
 
+        //NEw Customer
         public ActionResult New()
         {
-            return View();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult Index()

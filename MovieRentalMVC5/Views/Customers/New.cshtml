@@ -1,4 +1,4 @@
-﻿@model MovieRentalMVC5.Models.Customer
+﻿@model MovieRentalMVC5.ViewModels.NewCustomerViewModel
 
 @{
     /**/
@@ -14,19 +14,25 @@
 @using (Html.BeginForm("Create", "Customer"))
 {
     <div class="form-group">
-        @Html.LabelFor(c => c.Name)
-        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.Birthdate)
-        @Html.TextBoxFor(c => c.Birthdate, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.Birthdate)
+        @Html.TextBoxFor(c => c.Customer.Birthdate, new { @class = "form-control" })
     </div>
 
-     <div class="checkbox">
+    <div class="checkbox">
         <label>
-          @Html.CheckBoxFor( c=>c.IsSubsribedToNewsLetter) Subscribed to Newsletter?
+            @Html.CheckBoxFor(c => c.Customer.IsSubsribedToNewsLetter) Subscribed to Newsletter?
         </label>
+    </div>
+
+    @*SelectList(List of items, Value of item, Text of item)*@
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
     </div>
 
 }

@@ -21,7 +21,9 @@ namespace MovieRentalMVC5.Models
 
         //Navigation , ref to Membership Table
         public MembershipType MembershipType { get; set; }
+
         //FK to membership table, <Table_Name>Id -> Convention, treat as FK
+        [Display(Name = "Membership Type")]
         public int MembershipTypeId { get; set; }
     }
 }
