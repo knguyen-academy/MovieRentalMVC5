@@ -28,7 +28,7 @@ namespace MovieRentalMVC5.Controllers
             _context.Dispose();
         }
 
-        //NEw Customer
+        //New Customer
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -38,6 +38,16 @@ namespace MovieRentalMVC5.Controllers
             };
 
             return View(viewModel);
+        }
+
+        //Only be called after post
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _context.Customers.Add(customer);   //Add to DB
+            _context.SaveChanges(); //Commit changes to DB
+
+            return RedirectToAction("Index","Customers");
         }
 
         public ActionResult Index()
