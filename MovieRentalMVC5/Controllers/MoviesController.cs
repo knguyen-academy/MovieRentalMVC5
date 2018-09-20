@@ -33,6 +33,17 @@ namespace MovieRentalMVC5.Controllers
             return View(movies);
         }
 
+        public ActionResult MovieForm()
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new NewMovieViewModel
+            {
+                Genres = genres
+            };
+
+            return View(viewModel);
+ 
+        }
 
         public ActionResult Details(int id)
         {
