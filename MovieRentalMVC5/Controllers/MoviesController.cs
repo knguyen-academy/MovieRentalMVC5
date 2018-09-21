@@ -33,6 +33,7 @@ namespace MovieRentalMVC5.Controllers
             return View(movies);
         }
 
+        //New Movie Form
         public ActionResult MovieForm()
         {
             var genres = _context.Genres.ToList();
@@ -43,6 +44,46 @@ namespace MovieRentalMVC5.Controllers
 
             return View(viewModel);
  
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            //If new movie
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now; //added date
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                //get existing movie in DB
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                //Update moive
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumberInStock = movie.NumberInStock;
+            }
+            _context.SaveChanges(); //Commit changes to DB
+
+            return RedirectToAction("Index", "Movies");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movies = _context.Movies.Include(g => g.Genre).SingleOrDefault(m => m.Id == id);
+            if (movies == null)
+                return HttpNotFound();
+            else
+            {
+                var viewModel = new NewMovieViewModel
+                {
+                    Movie = movies,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
         }
 
         public ActionResult Details(int id)

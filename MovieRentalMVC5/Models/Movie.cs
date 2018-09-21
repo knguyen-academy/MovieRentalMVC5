@@ -14,6 +14,7 @@ namespace MovieRentalMVC5.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
         public DateTime DateAdded { get; set; }
         [Display(Name="Release Date")]
         public DateTime ReleaseDate { get; set; }
