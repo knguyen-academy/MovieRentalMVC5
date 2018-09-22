@@ -65,6 +65,8 @@ namespace MovieRentalMVC5.Controllers
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
+
+            //Added/Edit 
             _context.SaveChanges(); //Commit changes to DB
 
             return RedirectToAction("Index", "Movies");

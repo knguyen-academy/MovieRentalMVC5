@@ -22,10 +22,10 @@ namespace MovieRentalMVC5.Models
         [Display(Name="Numbers in stock")]
         public byte NumberInStock { get; set; }
 
-        [Required]
         public Genre Genre { get; set; }
 
         [Display(Name="Genre")]
+        [Required]
         public byte GenreId { get; set; }
                
     }
